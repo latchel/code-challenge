@@ -16,7 +16,7 @@ var cache = apicache.middleware;
 /* Get Github data from Github */
 router.get('/github-data', cache('10 minutes'), function (req, res, next) {
 	var baseUrl = "https://api.github.com"
-	var endpointUrl = "/repos/wilbertthelam/addy.ai/stats/contributors"
+	var endpointUrl = "/repos/nodejs/node/stats/contributors"
 
 	var rawData = {};
 	// Request to hit the Github endpoint for user contributors
@@ -62,6 +62,7 @@ router.get('/github-data', cache('10 minutes'), function (req, res, next) {
 			}
 		*/
 		createUsableData: function (callback) {
+			console.log('retrieved data');
 			var userData = [];
 			var statusCode = 200;
 
@@ -109,7 +110,7 @@ router.get('/github-data', cache('10 minutes'), function (req, res, next) {
 				console.log(newUserData);
 				userData.push(newUserData);
 			}
-
+			console.log('end data');
 			
 			return res.json({
 				statusCode: statusCode,

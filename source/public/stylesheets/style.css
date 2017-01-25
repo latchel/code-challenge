@@ -1,10 +1,13 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.container-fluid {
+	font-family: 'Oswald', sans-serif;
 }
 
 
@@ -12,4 +15,23 @@ a {
 	width: 100px;
 	height: 100px;
 	border: solid gray 2px;
+}
+
+#commits {
+	font-size: 3em;
+	font-weight: bold;
+}
+
+.name {
+	font-size: 2em;
+}
+
+#users-list .user-row {
+	margin: 10px;
+}
+
+#users-list .first #commits {
+	color: maroon;
+	font-size: 6em;
+	font-weight: 700;
 }
