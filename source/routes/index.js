@@ -6,4 +6,5 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Latchel\'s Biggest Git' });
 });
 
+
 module.exports = router;

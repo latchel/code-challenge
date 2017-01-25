@@ -2,12 +2,14 @@
 <html ng-app="app">
 	<head>
 		<% include sources %>
-		<script src="/javascripts/controllers/MainController.js"></script>
+		<script src="/javascripts/components/UsersComponent.js"></script>
+		<!-- <script src="/javascripts/controllers/MainController.js"></script> -->
 
 		<title><%= title %></title>
 	</head>
 
-	<body ng-controller="MainController">
+	<!-- <body ng-controller="MainController"> -->
+	<body>
 		<div class="container-fluid">
 			
 			<div class="row">
@@ -38,12 +40,7 @@
 				</div>
 				<div class="col-md-9">
 					<div class="main">
-						<ul>
-							<li ng-repeat="user in userData | orderBy: 'commits': 'reverse'">
-								{{ user.name }}
-								{{ user.commits }}
-							</li>
-						</ul>
+						<user-list></user-list>
 					</div>
 				</div>
 			</div>

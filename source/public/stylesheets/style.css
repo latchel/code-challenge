@@ -6,3 +6,10 @@ body {
 a {
   color: #00B7FF;
 }
+
+
+#users-list img {
+	width: 100px;
+	height: 100px;
+	border: solid gray 2px;
+}
