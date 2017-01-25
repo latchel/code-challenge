@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<% include sources %>
+		<script src="/javascripts/controllers/MainController.js"></script>
+
+		<title><%= title %></title>
+	</head>
+
+	<body ng-controller="MainController">
+		<div class="container-fluid">
+			
+			<div class="row">
+				<div class="banner">
+					<h1>Latchel's Biggest Git</h1>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+						<div id="inspirational-quote">
+							<blockquote>
+								<blockquote>
+									<p>
+										If you ain't first, you're last.
+									</p>
+									<footer>Ricky Bobby <cite title="Source Title">Talladega Nights</cite></footer>
+								</blockquote>
+								<footer>Your new dictat--I mean manager</footer>
+							</blockquote>
+						</div>
+
+						<div id="navbar">
+							Nav stuff here
+						</div>
+					</div>
+				</div>
+				<div class="col-md-9">
+					<div class="main">
+						<ul>
+							<li ng-repeat="user in userData | orderBy: 'commits': 'reverse'">
+								{{ user.name }}
+								{{ user.commits }}
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>
