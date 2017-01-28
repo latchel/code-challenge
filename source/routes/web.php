@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['as' => 'sprint_velocity', 'uses' => 'Controller@showSprintVelocity']);
+Route::get('/engineer-capacity/', ['as' => 'engineer_capacity', 'uses' => 'Controller@showEngineerCapacity']);
