@@ -21,4 +21,10 @@ a {
 
 div.container {
     margin-top: 94px;
+    margin-bottom: 94px;
+}
+
+div.info-card img {
+    width: 252.5px;
+    height: 252.5px;
 }
