@@ -13,10 +13,10 @@ var async = require('async');
 var apicache = require('apicache');
 var cache = apicache.middleware;
 
-/* Get Github data from Github */
-router.get('/github-data', cache('10 minutes'), function (req, res, next) {
-	var baseUrl = "https://api.github.com"
-	var endpointUrl = "/repos/nodejs/node/stats/contributors"
+/* Post Github data from Github */
+router.post('/github-data', cache('10 minutes'), function (req, res, next) {
+	var baseUrl = 'https://api.github.com';
+	var endpointUrl = '/repos/' + req.body.owner + '/' + req.body.repo + '/stats/contributors';
 
 	var rawData = {};
 	// Request to hit the Github endpoint for user contributors
@@ -44,7 +44,7 @@ router.get('/github-data', cache('10 minutes'), function (req, res, next) {
 				} else {
 					console.log('error: '+ response.statusCode)
 					console.log(body)
-					rawData['statusCode'] = statusCode;
+					rawData['statusCode'] = response.statusCode;
 					rawData['errorMessage'] = error;
 					return res.json(rawData);
 				}
