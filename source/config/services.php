@@ -35,4 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+	'github' => [
+		'base_uri' => 'https://api.github.com/',
+		'owner' => 'nodejs',
+		'repo' => 'node',
+	]
+
 ];
