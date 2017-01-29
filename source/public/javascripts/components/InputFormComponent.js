@@ -1,20 +1,20 @@
 
 angular.module('app').component('inputForm', {
 	template:
-		'<form>' + 
-			'<div class="form-group">' +
-				'<label for="description">Yo, try out your repo by looking up owner and repo name.</label>' +
-				'<div>' +
-					'<label for="description">Owner</label>' +
-					'<input type="text" class="form-control" id="repo-form" ng-model="$ctrl.input.owner" placeholder="Github owner">' +
-				'</div>' +
-				'<div>' +
-					'<label for="description">Repo</label>' +
-					'<input type="text" class="form-control" id="name-form" ng-model="$ctrl.input.repo" placeholder="Github repo">' +
-				'</div>' +
-				'<button type="submit" class="btn btn-default" ng-click="$ctrl.searchRepo($ctrl.input.repo, $ctrl.input.owner)">Check out</button>' +
-			'</div>' +
-		'</form>',
+		`<form>
+			<div class="form-group">
+				<label for="description">Yo, try out your repo by looking up owner and repo name.</label>
+				<div>
+					<label for="description">Owner</label>
+					<input type="text" class="form-control" id="repo-form" ng-model="$ctrl.input.owner" placeholder="Github owner">
+				</div>
+				<div>
+					<label for="description">Repo</label>
+					<input type="text" class="form-control" id="name-form" ng-model="$ctrl.input.repo" placeholder="Github repo">
+				</div>
+				<button type="submit" class="btn btn-default" ng-click="$ctrl.searchRepo($ctrl.input.repo, $ctrl.input.owner)">Check out</button>
+			</div>
+		</form>`,
 
 	controller: function InputFormController($http) {
 		var self = this;

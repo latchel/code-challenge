@@ -17,13 +17,13 @@ var cache = apicache.middleware;
 var prevRepo = '';
 var prevOwner = '';
 
-// Middleware for APICache to only 
-
-
 /* Post Github data from Github */
-router.post('/github-data', function (req, res, next) {
+router.post('/github-data', cache('15 minutes', checkParams), function (req, res, next) {
 	var baseUrl = 'https://api.github.com';
 	var endpointUrl = '/repos/' + req.body.owner + '/' + req.body.repo + '/stats/contributors';
+
+	prevRepo = req.body.repo;
+	prevOwner = req.body.owner;
 
 	var rawData = {};
 	// Request to hit the Github endpoint for user contributors
@@ -128,5 +128,17 @@ router.post('/github-data', function (req, res, next) {
 		}
 	});
 });
+
+// Toggle middleware to see if we activate cache or not
+// based on if we have a new repo/owner provided
+function checkParams(req, res) {
+	console.log(prevRepo);
+	console.log(prevOwner);
+	console.log(req.body.repo);
+	console.log(req.body.owner);
+	var useCache = (prevRepo === req.body.repo && prevOwner === req.body.owner);
+	console.log(useCache);
+	return useCache;
+}
 
 module.exports = router;
