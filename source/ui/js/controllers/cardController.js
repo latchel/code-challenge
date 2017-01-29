@@ -5,51 +5,43 @@ myApp.controller('CardsController',function($scope){
     $scope.init = function(contributor) {
         $scope.authorAvatarUrl = getAuthorAvatarUrl(contributor.author);
         $scope.userLogin = getUserLogin(contributor.author);
-        $scope.
+        $scope.userData =  getWeeksData(contributor.weeks);
     };
 
-    $scope.getHtmlUrl = function(author) {
+    function getHtmlUrl(author) {
         return author.html_url;
-    };
+    }
 
-    $scope.getUserLogin = function(author) {
+    function getUserLogin(author) {
         return author.login;
-    };
+    }
 
-    $scope.getAuthorAvatarUrl = function(author) {
+    function getAuthorAvatarUrl(author) {
         return author.avatar_url;
-    };
+    }
 
-    $scope.getTotalAdditions = function(weeks) {
+    function getlastDate() {
+        return new Date("11/21/2015").getTime();
+    }
+
+    function getWeeksData(weeks) {
+        var lastDate = getlastDate();
         var additions = 0;
-        for(var ta = 0; ta < weeks.length; ta++) {
-            additions += weeks[ta].a;
-        }
-        return additions;
-    };
-
-    $scope.getTotalDeletions = function(weeks) {
         var deletions = 0;
-        for(var td = 0; td < weeks.length; td++) {
-            deletions += weeks[td].d;
-        }
-        return deletions;
-    };
-
-    $scope.getTotalCommits = function(weeks) {
         var commits = 0;
-        for(var tc = 0; tc < weeks.length; tc++) {
-            commits += weeks[tc].c;
+        var first_week = null;
+        for(var ta = 0; ta < weeks.length; ta++) {
+            var weekms = weeks[ta].w * 1000;
+            if(weekms > lastDate) {
+                additions += weeks[ta].a;
+                deletions += weeks[ta].d;
+                commits += weeks[ta].c;
+                if(weekms < first_week || !first_week) {
+                    first_week = weekms;
+                }
+            }
         }
-        return commits;
-    };
-
-    $scope.getStartDate = function() {
-        return
-    };
-
-    $scope.getEndDate = function() {
-        return
-    };
+        return { first_week: first_week, additions: additions, deletions: deletions, commits: commits, last_week: (weeks[weeks.length - 1].w * 1000)};
+    }
 
 });

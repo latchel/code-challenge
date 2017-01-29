@@ -5,9 +5,8 @@
                 <img ng-src="{{authorAvatarUrl}}">
                 <div class="caption">
                     <h4>{{userLogin}}</h4>
-                    <p><span>{{getTotalCommits(contributor.weeks)}} Commits /</span> <span>{{getTotalAdditions(contributor.weeks)}} ++ /</span> <span>{{getTotalDeletions(contributor.weeks)}} --</span></p>
-                    <!--<a href="#" class="btn btn-default btn-xs pull-right" role="button"><i class="glyphicon glyphicon-edit"></i></a> <a href="#" class="btn btn-info btn-xs" role="button">Button</a> <a href="#" class="btn btn-default btn-xs" role="button">Button</a>-->
-                    <p>{{}} - {{}}</p>
+                    <p><span>{{userData.commits}} Commits /</span> <span>{{userData.additions}} ++ /</span> <span>{{userData.deletions}} --</span></p>
+                    <p>{{userData.first_week | date :  "MM/dd/yyyy"}} - {{userData.last_week | date :  "MM/dd/yyyy"}}</p>
                 </div>
             </div>
         </div>
