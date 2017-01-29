@@ -1,0 +1,12 @@
+!!!
+%html
+  %head
+    %title RepoAudit
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body{"ng-app" => "app"}
+    .header 
+      %h1 This is the header
+    .body
+      = yield
