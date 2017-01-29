@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "test": "jasmine-node tests/"
   },
   "dependencies": {
     "apicache": "^0.8.3",
@@ -16,5 +17,9 @@
     "morgan": "~1.7.0",
     "request": "^2.79.0",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "frisby": "^0.8.5",
+    "jasmine-node": "^1.14.5"
   }
 }

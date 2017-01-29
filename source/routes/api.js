@@ -13,8 +13,15 @@ var async = require('async');
 var apicache = require('apicache');
 var cache = apicache.middleware;
 
+// Contains previous repo/owner name that is requested
+var prevRepo = '';
+var prevOwner = '';
+
+// Middleware for APICache to only 
+
+
 /* Post Github data from Github */
-router.post('/github-data', cache('10 minutes'), function (req, res, next) {
+router.post('/github-data', function (req, res, next) {
 	var baseUrl = 'https://api.github.com';
 	var endpointUrl = '/repos/' + req.body.owner + '/' + req.body.repo + '/stats/contributors';
 
@@ -37,6 +44,7 @@ router.post('/github-data', cache('10 minutes'), function (req, res, next) {
 					rawData['data'] = JSON.parse(body);
 					callback(null);
 				} else if (response.statusCode === 202) {
+					console.log(response);
 					console.log('Github creating cache right now, try again.');
 					rawData['statusCode'] = 202;
 					rawData['errorMessage'] = error;
