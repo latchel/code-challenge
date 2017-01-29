@@ -13,14 +13,18 @@
 
 	<div class="row">
 		<div class="small-12 large-8 columns">
-			<div id="js-velocity-chart"></div>
+			<div class="callout">
+				<div id="js-velocity-chart"></div>
+			</div>
 		</div>
 		<div class="small-12 large-4 columns">
-			<div>
+			<div class="callout">
 				<p>Average Velocity (per week):</p>
-				<div class="stat">{{$gauge_stats['avg_velocity']}}</div>
+				<div class="stat">{{number_format($gauge_stats['avg_velocity'],0, '.', ',')}}</div>
 			</div>
-			<div id="js-capacity-gauge" style="width: 300px; height: 200px; float: left"></div>
+			<div class="callout">
+				<div id="js-capacity-gauge" style="height: 200px;"></div>
+			</div>
 		</div>
 	</div>
 
@@ -28,20 +32,12 @@
 	<script type="text/javascript">
 		$(function () {
 
-
+		// Sprint Velocity bar chart
 		Highcharts.chart('js-velocity-chart', {
-			chart: {
-				type: 'column'
-			},
-			title: {
-				text: 'Sprint Velocity'
-			},
-			subtitle: {
-				text: 'Source: GitHub.com'
-			},
-			legend: {
-				enabled: false
-			},
+			chart: {type: 'column'},
+			title: {text: 'Sprint Velocity'},
+			legend: {enabled: false},
+			exporting: {enabled: false},
 			xAxis: {
 				categories: [
 					'{!!implode('\',\'', $velocity_chart_stats['dates'])!!}'
@@ -70,96 +66,91 @@
 			},
 			series: [{
 				data: [{{implode(',', $velocity_chart_stats['contributions'])}}]
-
 			}]
 		});
 
 
 
-			var gaugeOptions = {
-
-				chart: {
-					type: 'solidgauge'
+		var gaugeOptions = {
+			chart: {
+				type: 'solidgauge'
+			},
+			title: null,
+			pane: {
+				center: ['50%', '85%'],
+				size: '140%',
+				startAngle: -90,
+				endAngle: 90,
+				background: {
+					backgroundColor: '#EEE',
+					innerRadius: '60%',
+					outerRadius: '100%',
+					shape: 'arc'
+				}
+			},
+			tooltip: {
+				enabled: false
+			},
+			// the value axis
+			yAxis: {
+				stops: [
+					[0.1, '#55BF3B'], // green
+					[0.5, '#DDDF0D'], // yellow
+					[0.9, '#DF5353'] // red
+				],
+				lineWidth: 0,
+				minorTickInterval: null,
+				tickAmount: 2,
+				title: {
+					y: -70
 				},
+				labels: {
+					y: 16
+				}
+			},
 
-				title: null,
-
-				pane: {
-					center: ['50%', '85%'],
-					size: '140%',
-					startAngle: -90,
-					endAngle: 90,
-					background: {
-						backgroundColor: '#EEE',
-						innerRadius: '60%',
-						outerRadius: '100%',
-						shape: 'arc'
-					}
-				},
-
-				tooltip: {
-					enabled: false
-				},
-
-				// the value axis
-				yAxis: {
-					stops: [
-						[0.1, '#55BF3B'], // green
-						[0.5, '#DDDF0D'], // yellow
-						[0.9, '#DF5353'] // red
-					],
-					lineWidth: 0,
-					minorTickInterval: null,
-					tickAmount: 2,
-					title: {
-						y: -70
-					},
-					labels: {
-						y: 16
-					}
-				},
-
-				plotOptions: {
-					solidgauge: {
-						dataLabels: {
-							y: 5,
-							borderWidth: 0,
-							useHTML: true
-						}
+			plotOptions: {
+				solidgauge: {
+					dataLabels: {
+						y: 5,
+						borderWidth: 0,
+						useHTML: true
 					}
 				}
-			};
+			}
+		};
 
-
-			Highcharts.chart('js-capacity-gauge', Highcharts.merge(gaugeOptions, {
-				yAxis: {
-					min: 0,
-					max: {{$gauge_stats['avg_velocity']}},
-					title: {
-						text: 'Current Load'
-					}
+		// gauge chart
+		Highcharts.chart('js-capacity-gauge', Highcharts.merge(gaugeOptions, {
+			yAxis: {
+				min: 0,
+				max: {{$gauge_stats['avg_velocity']}},
+				title: {
+					text: 'Current Load'
+				}
+			},
+			exporting: {
+				enabled: false
+			},
+			credits: {
+				enabled: false
+			},
+			legend: {
+				enabled: false
+			},
+			series: [{
+				name: 'Speed',
+				data: [{{$gauge_stats['capacity']}}],
+				dataLabels: {
+					format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+					((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
+					'<span style="font-size:12px;color:silver">(lines)</span></div>'
 				},
-
-				credits: {
-					enabled: false
-				},
-				legend: {
-					enabled: false
-				},
-				series: [{
-					name: 'Speed',
-					data: [{{$gauge_stats['capacity']}}],
-					dataLabels: {
-						format: '<div style="text-align:center"><span style="font-size:25px;color:' +
-						((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
-						'<span style="font-size:12px;color:silver">(lines)</span></div>'
-					},
-					tooltip: {
-						valueSuffix: ' lines of code'
-					}
-				}]
-
-			}));
+				tooltip: {
+					valueSuffix: ' lines of code'
+				}
+			}]
+		}));
 
 	});
 	</script>
