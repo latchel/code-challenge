@@ -1,12 +1,24 @@
 <div class="container" ng-controller="UsersController" fade-in>
+    <div class="row user-date-picker">
+        <div class="col-xs-12 col-sm-6 col-lg-8">
+            <datepicker date-format="MM/dd/yyyy" date-min-limit="01/01/2010" date-max-limit="01/27/2017">
+                <input ng-model="filterDate" type="text" placeholder="Choose a date to filter"/><span class="date-label">Choose a date to update</span>
+            </datepicker>
+        </div>
+        <div class="col-xs-6 col-lg-4">
+        </div>
+    </div>
     <div class="row">
         <div class="info-card col-xs-18 col-sm-6 col-md-3" ng-controller="CardsController" ng-repeat="contributor in contributors.data" ng-init="init(contributor)">
             <div class="thumbnail">
                 <img ng-src="{{authorAvatarUrl}}">
                 <div class="caption">
                     <h4>{{userLogin}}</h4>
-                    <p><span>{{userData.commits}} Commits /</span> <span>{{userData.additions}} ++ /</span> <span>{{userData.deletions}} --</span></p>
-                    <p>{{userData.first_week | date :  "MM/dd/yyyy"}} - {{userData.last_week | date :  "MM/dd/yyyy"}}</p>
+                    <hr>
+                    <p><span class="info-card-ct">{{userData.commits}} Commits </span> / <span class="info-card-ad">{{userData.additions}} ++ </span> / <span class="info-card-ds"> {{userData.deletions}} --</span></p>
+                    <p><span class="info-label"> Followers </span> - {{followers}} / <span class="info-label"> Following </span> - {{following}}</p>
+                    <hr>
+                    <p class="info-card-date">{{userData.first_week | date :  "MM/dd/yyyy"}} - {{userData.last_week | date :  "MM/dd/yyyy"}}</p>
                 </div>
             </div>
         </div>

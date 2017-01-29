@@ -24,7 +24,42 @@ div.container {
     margin-bottom: 94px;
 }
 
+div.info-card {
+    height: 500px;
+}
+
 div.info-card img {
-    width: 252.5px;
-    height: 252.5px;
+    width: 252px;
+    height: 252px;
+}
+
+div.user-date-picker {
+    margin-bottom: 15px;
+}
+
+span.date-label {
+    margin-left: 10px;
+}
+
+span.info-card-ad {
+    color: #6cc644;
+}
+
+span.info-card-ds {
+    color: #bd2c00;
+}
+
+span.date-picker-calendar {
+    margin-right: 4PX;
+}
+
+span.info-label {
+    color: #0505bf;
+    font-weight: bold;
+}
+
+p.info-card-date {
+    margin: 0 !important;
+    font-weight: bold;
+    font-size: 13px;
 }

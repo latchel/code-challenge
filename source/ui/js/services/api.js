@@ -2,13 +2,18 @@
 myApp.factory('RESTService',
     function ($http) {
         return {
-            login: function (data) {
-                return $http.get('/?' , {params: data}).then(function (res) {
+            getContributors: function (data) {
+                return $http.get('https://api.github.com/repos/nodejs/node/stats/contributors?' , {params: data}).then(function (res) {
                     return res;
                 });
             },
-            getStars: function (data) {
-                return $http.get('https://api.github.com/repos/nodejs/node/stats/contributors?' , {params: data}).then(function (res) {
+            getFollowers: function (data, user) {
+                return $http.get('https://api.github.com/users/'+user+'/followers' , {params: data}).then(function (res) {
+                    return res;
+                });
+            },
+            getFollowing: function (data, user) {
+                return $http.get('https://api.github.com/users/'+user+'/following' , {params: data}).then(function (res) {
                     return res;
                 });
             },
