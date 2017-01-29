@@ -7,6 +7,14 @@
 	{{-- stylesheets --}}
 	<link rel="stylesheet" href="{{ asset('/css/vendor/foundation.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+
+	{{-- javascript --}}
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+			integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+			crossorigin="anonymous"></script>
+	<script src="{{asset('/js/vendor/highcharts.js')}}"></script>
+	<script src="{{asset('/js/vendor/highcharts-more.js')}}"></script>
+	<script src="{{asset('/js/vendor/solid-gauge.js')}}"></script>
 </head>
 
 
