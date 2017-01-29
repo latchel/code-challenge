@@ -44,6 +44,40 @@ class Controller extends BaseController
 	 */
 	public function showEngineerCapacity()
 	{
-		return view('engineer_capacity');
+		$repo = Repo::where('name', config('services.github.owner') . '/' . config('services.github.repo'))
+			->firstOrFail();
+
+		$user_stats = RepoStatsRepository::get_contributions_by_contributor($repo->id, 4);
+
+		// calculate available capacity by contributor
+		$user_current_stats = collect(RepoStatsRepository::get_contributions_by_contributor($repo->id, 0))->keyBy('id')->toArray();
+		$user_capacity = [];
+		foreach($user_stats as $stats)
+		{
+			$user_capacity[] = [
+				'username' => $stats['username'],
+				'avg_contributions' => $stats['avg_contributions'],
+				'capacity' => array_key_exists($stats['id'], $user_current_stats) ?
+								intval($stats['avg_contributions'] - $user_current_stats[$stats['id']]['total_contributions']) :
+								intval($stats['avg_contributions']),
+			];
+		}
+		$user_capacity = collect($user_capacity)->sortByDesc('capacity');
+
+		$bar_chart_stats = [
+			'username' =>  $user_capacity->pluck('username')->toArray(),
+			'capacity' =>  $user_capacity->pluck('capacity')->toArray(),
+		];
+
+
+		// calculate contribution percentage by contributor
+		$pie_chart_stats = collect($user_stats)->transform(function ($item, $key) {
+			return [
+				'name' => $item['username'],
+				'y' => intval($item['total_contributions']),
+			];
+		});
+
+		return view('engineer_capacity', compact('pie_chart_stats', 'bar_chart_stats'));
 	}
 }

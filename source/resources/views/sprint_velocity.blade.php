@@ -4,7 +4,8 @@
 
 @section('body')
 	<div class="row column">
-		<h1>Sprint Velocity</h1>
+		<h1>Team Stats</h1>
+		<hr />
 		<p>
 		"Contributions" are calculated as lines of code added + lines of code removed.
 		</p>
@@ -15,6 +16,10 @@
 			<div id="js-velocity-chart"></div>
 		</div>
 		<div class="small-12 large-4 columns">
+			<div>
+				<p>Average Velocity (per week):</p>
+				<div class="stat">{{$gauge_stats['avg_velocity']}}</div>
+			</div>
 			<div id="js-capacity-gauge" style="width: 300px; height: 200px; float: left"></div>
 		</div>
 	</div>
@@ -33,6 +38,9 @@
 			},
 			subtitle: {
 				text: 'Source: GitHub.com'
+			},
+			legend: {
+				enabled: false
 			},
 			xAxis: {
 				categories: [
@@ -135,7 +143,9 @@
 				credits: {
 					enabled: false
 				},
-
+				legend: {
+					enabled: false
+				},
 				series: [{
 					name: 'Speed',
 					data: [{{$gauge_stats['capacity']}}],
