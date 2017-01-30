@@ -1,3 +1,37 @@
 .container{'ng-controller' => 'ContributorsController'}
-  %h2 Hello and welcome!
-  {{foo}}
+  %h2.page-header Contributions Review
+
+  %button{'ng-click' => 'order = "additions"'} Additions
+  %button{'ng-click' => 'order = "deletions"'} Deletions
+  %button{'ng-click' => 'order = "commits"'} Commits
+  %button{'ng-click' => 'order = "total"'} Total
+
+  %h3{'ng-show' => 'loading'} Loading
+
+  .contributions-container
+    %ul
+      %li.row.contrib-row{'ng-repeat' => 'contributor in contributions | orderBy : dynamicOrder : true'}
+        %a.col-md-4{href: '{{contributor.url}}', alt: 'Link to Github account for {{contributor.login}}'}
+          .row
+            .col-md-8
+              %img.img-rounded.avatar-img{src: '{{contributor.avatar_url}}', alt: 'Avatar for {{contributor.login}}'}
+            .name.col-md-4 {{contributor.login}}
+        %span.col-md-8 
+          %ul.row
+            %li.col-md-3.action-data
+              .action {{contributor.month_additions}}
+              .small additions
+            %li.col-md-3.action-data
+              .action {{contributor.month_deletions}}
+              .small deletions
+            %li.col-md-3.action-data
+              .action {{contributor.month_commits}}
+              .small commits
+            %li.col-md-3.action-data
+              .action.total {{contributor.month_additions + contributor.month_deletions + contributor.month_commits}}
+              .total total actions
+
+
+
+
+

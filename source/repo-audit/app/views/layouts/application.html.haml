@@ -1,12 +1,13 @@
 !!!
 %html
   %head
-    %title RepoAudit
+    %title Repo Audit
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body{"ng-app" => "app"}
-    .header 
-      %h1 This is the header
+    %nav.navbar.navbar-default
+      .container-fluid
+        %h1 Latchel Internal Tools
     .body
       = yield
