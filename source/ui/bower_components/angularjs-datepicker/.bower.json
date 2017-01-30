@@ -1,0 +1,41 @@
+{
+  "name": "angularjs-datepicker",
+  "version": "2.1.12",
+  "description": "A datepicker directive for angularjs.",
+  "authors": [
+    "Filippo Oretti <filippo.oretti@gmail.com",
+    "Dario Andrei <wouldgo84@gmail.com>"
+  ],
+  "keywords": [
+    "date",
+    "datepicker",
+    "input",
+    "angularjs",
+    "angular",
+    "input"
+  ],
+  "license": "MIT",
+  "main": [
+    "./dist/angular-datepicker.css",
+    "./dist/angular-datepicker.js",
+    "./dist/angular-datepicker.sourcemap.map"
+  ],
+  "homepage": "http://720kb.github.io/angular-datepicker",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "2.1.12",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.1.12",
+    "commit": "f130d695e4b6c14e0b7db4c5b807d3e0485e51a0"
+  },
+  "_source": "https://github.com/720kb/angular-datepicker.git",
+  "_target": "^2.1.12",
+  "_originalSource": "angularjs-datepicker",
+  "_direct": true
+}

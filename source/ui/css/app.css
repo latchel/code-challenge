@@ -1,0 +1,76 @@
+
+html {
+    overflow-y: scroll;
+}
+
+a {
+    cursor: pointer;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none !important;
+}
+
+div.container {
+    margin-top: 94px;
+    margin-bottom: 94px;
+}
+
+div.info-card {
+    height: 500px;
+}
+
+div.info-card img {
+    width: 252px;
+    height: 252px;
+}
+
+div.repo-input {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+div.default-bottom-padding {
+    margin-bottom: 15px;
+}
+
+div.thumbnail > img:hover {
+    cursor: pointer;
+}
+
+div.caption > h4:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+span.date-label {
+    margin-left: 10px;
+}
+
+span.info-card-ad {
+    color: #6cc644;
+}
+
+span.info-card-ds {
+    color: #bd2c00;
+}
+
+span.info-card-ct:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+span.date-picker-calendar {
+    margin-right: 4PX;
+}
+
+span.info-label {
+    color: #0505bf;
+    font-weight: bold;
+}
+
+p.info-card-date {
+    margin: 0 !important;
+    font-weight: bold;
+    font-size: 13px;
+}
