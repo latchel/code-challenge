@@ -12,3 +12,4 @@ frisby.create('Make sure we return github data in right format')
       commits: Number,
   })
 .toss();
+

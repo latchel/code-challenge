@@ -39,19 +39,19 @@ router.post('/github-data', cache('15 minutes', checkParams), function (req, res
 				}
 			}, function (error, response, body) {
 				if (response.statusCode === 200){
-					console.log('Github data retrieved');
+					// console.log('Github data retrieved');
 					rawData['statusCode'] = 200;
 					rawData['data'] = JSON.parse(body);
 					callback(null);
 				} else if (response.statusCode === 202) {
-					console.log(response);
-					console.log('Github creating cache right now, try again.');
+					// console.log(response);
+					// console.log('Github creating cache right now, try again.');
 					rawData['statusCode'] = 202;
 					rawData['errorMessage'] = error;
 					return res.json(rawData)
 				} else {
-					console.log('error: '+ response.statusCode)
-					console.log(body)
+					// console.log('error: '+ response.statusCode)
+					// console.log(body)
 					rawData['statusCode'] = response.statusCode;
 					rawData['errorMessage'] = error;
 					return res.json(rawData);
@@ -70,7 +70,7 @@ router.post('/github-data', cache('15 minutes', checkParams), function (req, res
 			}
 		*/
 		createUsableData: function (callback) {
-			console.log('retrieved data');
+			// console.log('retrieved data');
 			var userData = [];
 			var statusCode = 200;
 
@@ -115,10 +115,10 @@ router.post('/github-data', cache('15 minutes', checkParams), function (req, res
 				newUserData['avatarUrl'] = author.avatar_url;
 				newUserData['htmlUrl'] = author.html_url;
 
-				console.log(newUserData);
+				// console.log(newUserData);
 				userData.push(newUserData);
 			}
-			console.log('end data');
+			// console.log('end data');
 			
 			return res.json({
 				statusCode: statusCode,
@@ -132,13 +132,7 @@ router.post('/github-data', cache('15 minutes', checkParams), function (req, res
 // Toggle middleware to see if we activate cache or not
 // based on if we have a new repo/owner provided
 function checkParams(req, res) {
-	console.log(prevRepo);
-	console.log(prevOwner);
-	console.log(req.body.repo);
-	console.log(req.body.owner);
-	var useCache = (prevRepo === req.body.repo && prevOwner === req.body.owner);
-	console.log(useCache);
-	return useCache;
+	return (prevRepo === req.body.repo && prevOwner === req.body.owner);
 }
 
 module.exports = router;
