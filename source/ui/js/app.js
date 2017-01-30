@@ -26,3 +26,13 @@ myApp.config(['$routeProvider', function ($routeProvider) {
     });
 
 }]);
+
+myApp.run(function ($window) {
+
+    if($window && $window.navigator) {
+        if(!$window.navigator.onLine){
+            alert("You are offline please connect to the internet");
+        }
+    }
+
+});
