@@ -1,20 +1,12 @@
-/** TODO this can be cleaned up, LESSified, and minimized **/
 
-/* just commit to showing the scroll on the right.  otherwise looks funny when
-   navbar is resized horizonally when vertical scroll appears */
 html {
     overflow-y: scroll;
 }
 
-/* anchor tags should use pointer like buttons */
 a {
     cursor: pointer;
 }
 
-/** this allows us to display nothing until angular has applied changes to the dom
-    without this we see what the dom wants to display first, and then get an update
-    within milliseconds once angular is finished. -- it's the "funny flicker effect"
- **/
 [ng\:cloak], [ng-cloak], .ng-cloak {
     display: none !important;
 }
