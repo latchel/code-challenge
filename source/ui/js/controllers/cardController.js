@@ -3,9 +3,15 @@
 myApp.controller('CardsController',function($scope, RESTService){
 
     var _contributor = {};
+    var _index = -1;
+    var _repo_owner = 'nodejs';
+    var _repo = 'node';
 
-    $scope.init = function(contributor) {
+    $scope.init = function(index, contributor, repo_owner, repo) {
         _contributor = contributor;
+        _repo_owner = repo_owner;
+        _index = index;
+        _repo = repo;
         $scope.authorAvatarUrl = getAuthorAvatarUrl();
         $scope.userLogin = getUserLogin();
         $scope.userData =  getWeeksData();
@@ -13,16 +19,24 @@ myApp.controller('CardsController',function($scope, RESTService){
         getFollowing();
     };
 
+    $scope.goToUserHome = function() {
+      window.open("https://github.com/"+$scope.userLogin);
+    };
+
+    $scope.goToCommits = function() {
+        window.open('https://github.com/'+_repo_owner+'/'+_repo+'/commits?author='+$scope.userLogin);
+    };
+
     function getHtmlUrl(author) {
-        return author.html_url;
+        return author && author.html_url;
     }
 
     function getUserLogin() {
-        return _contributor.author.login;
+        return _contributor.author && _contributor.author.login;
     }
 
     function getAuthorAvatarUrl() {
-        return _contributor.author.avatar_url;
+        return _contributor.author && _contributor.author.avatar_url;
     }
 
     function getFollowers() {
@@ -63,13 +77,12 @@ myApp.controller('CardsController',function($scope, RESTService){
                 }
             }
         }
+        $scope.$parent.updateTotal(_index, commits);
         return { first_week: first_week, additions: additions, deletions: deletions, commits: commits, last_week: (_weeks[_weeks.length - 1].w * 1000)};
     }
 
     $scope.$watch(
-
         function() { return $scope.filterDate; },
-
         function(newValue, oldValue) {
             if(new Date(newValue).getTime() == new Date(oldValue).getTime()) return;
             try {

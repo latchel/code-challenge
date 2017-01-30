@@ -1,24 +1,20 @@
+'use strict';
 
 myApp.factory('RESTService',
-    function ($http) {
+    function ($http, Constants) {
         return {
-            getContributors: function (data) {
-                return $http.get('https://api.github.com/repos/nodejs/node/stats/contributors?' , {params: data}).then(function (res) {
+            getContributors: function (data, repo_owner, repo) {
+                return $http.get(Constants.apiUrl+'/repos/'+repo_owner+'/'+repo+'/stats/contributors?' , {params: data}).then(function (res) {
                     return res;
                 });
             },
             getFollowers: function (data, user) {
-                return $http.get('https://api.github.com/users/'+user+'/followers' , {params: data}).then(function (res) {
+                return $http.get(Constants.apiUrl+'/users/'+user+'/followers' , {params: data}).then(function (res) {
                     return res;
                 });
             },
             getFollowing: function (data, user) {
-                return $http.get('https://api.github.com/users/'+user+'/following' , {params: data}).then(function (res) {
-                    return res;
-                });
-            },
-            post: function (data) {
-                return $http.post('/auth' , {params: data}).then(function (res) {
+                return $http.get(Constants.apiUrl+'/users/'+user+'/following' , {params: data}).then(function (res) {
                     return res;
                 });
             }

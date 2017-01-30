@@ -1,19 +1,29 @@
 'use strict';
 
-myApp.controller('UsersController',function($scope, RESTService){
+myApp.controller('UsersController',function($scope, RESTService, Constants){
 
     $scope.filterDate = '11/28/2016';
-
     $scope.contributors = {};
+    $scope.repo_owner = 'nodejs';
+    $scope.repo = 'node';
 
-    function getContributors(){
+    $scope.updateTotal = function(index, total) {
+        if(!$scope.contributors.data || !$scope.contributors.data[index] || !$scope.contributors.data[index].total) return;
+        $scope.contributors.data[index].total = total;
+    };
+
+    $scope.getContributors = function(){
         RESTService.getContributors({
-            access_token: 'c6619bf042e53c9796a04fd3a486305ed51c79ad'
-        }).then(function(res) {
-            $scope.contributors = res;
+            access_token: Constants.access_token
+        },$scope.repo_owner,$scope.repo).then(function(res) {
+            if(res.status == 200){
+                $scope.contributors = res;
+            } else if(res.status == 202){
+                alert('The statistics you requested are not available try again in a moment');
+            }
         });
-    }
+    };
 
-    getContributors();
+    $scope.getContributors();
 
 });

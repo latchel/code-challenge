@@ -33,8 +33,22 @@ div.info-card img {
     height: 252px;
 }
 
-div.user-date-picker {
+div.repo-input {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+div.default-bottom-padding {
     margin-bottom: 15px;
+}
+
+div.thumbnail > img:hover {
+    cursor: pointer;
+}
+
+div.caption > h4:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 span.date-label {
@@ -47,6 +61,11 @@ span.info-card-ad {
 
 span.info-card-ds {
     color: #bd2c00;
+}
+
+span.info-card-ct:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 span.date-picker-calendar {

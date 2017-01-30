@@ -2,30 +2,44 @@
 
 /* jasmine specs for controllers go here */
 
-describe('MyCtrl1', function () {
-    var myCtrl1;
+describe('UsersController', function () {
 
-    beforeEach(function () {
-        myCtrl1 = new MyCtrl1();
+    var scopeMock;
+
+    beforeEach(module('myApp'));
+
+    beforeEach(
+        inject(
+            function( $rootScope, $controller ){
+                scopeMock = $rootScope.$new();
+                $controller( 'UsersController', {$scope: scopeMock} );
+            }
+        )
+    );
+
+    it('should exist', function() {
+        expect(scopeMock).toBeDefined();
     });
 
-
-    it('should ....', function () {
-        //spec body
-    });
 });
 
 
-describe('MyCtrl2', function () {
-    var myCtrl2;
+describe('CardsController', function () {
+    var scopeMock;
 
+    beforeEach(module('myApp'));
 
-    beforeEach(function () {
-        myCtrl2 = new MyCtrl2();
+    beforeEach(
+        inject(
+            function( $rootScope, $controller ){
+                scopeMock = $rootScope.$new();
+                $controller( 'CardsController', {$scope: scopeMock} );
+            }
+        )
+    );
+
+    it('should exist', function() {
+        expect(scopeMock).toBeDefined();
     });
 
-
-    it('should ....', function () {
-        //spec body
-    });
 });

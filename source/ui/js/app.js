@@ -4,20 +4,17 @@
 var myApp = angular.module('myApp',
     [
         'ngRoute',
-        'myApp.filters',
         'myApp.directives',
         'ui',
         'ngSanitize',
-        '720kb.datepicker'
+        '720kb.datepicker',
+        'angular-loading-bar'
     ]);
 
-
-var filters = angular.module('myApp.filters', []);
 var directives = angular.module('myApp.directives', []);
-var constants = angular.module('myApp.config', []);
 
 // bootstrap angular
-myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
+myApp.config(['$routeProvider', function ($routeProvider) {
 
     $routeProvider.when('/', {
         templateUrl:'partials/users.html'
