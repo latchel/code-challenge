@@ -8,13 +8,37 @@ var myApp = angular.module('myApp',
         'ui',
         'ngSanitize',
         '720kb.datepicker',
-        'angular-loading-bar'
+        'angular-loading-bar',
+        'LocalStorageModule'
     ]);
 
 var directives = angular.module('myApp.directives', []);
 
+myApp.factory('myAppInterceptor', function(){
+    return {
+        request: function(config) {
+            return config;
+        },
+
+        requestError: function(config) {
+            return config;
+        },
+
+        response: function(res) {
+            return res;
+        },
+
+        responseError: function(res) {
+            alert("Please connect to the internet!");
+            return res;
+        }
+    }
+});
+
 // bootstrap angular
-myApp.config(['$routeProvider', function ($routeProvider) {
+myApp.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
+
+    $httpProvider.interceptors.push('myAppInterceptor');
 
     $routeProvider.when('/', {
         templateUrl:'partials/users.html'
@@ -27,12 +51,3 @@ myApp.config(['$routeProvider', function ($routeProvider) {
 
 }]);
 
-myApp.run(function ($window) {
-
-    if($window && $window.navigator) {
-        if(!$window.navigator.onLine){
-            alert("You are offline please connect to the internet");
-        }
-    }
-
-});

@@ -20,6 +20,8 @@ myApp.controller('UsersController',function($scope, RESTService, Constants){
                 $scope.contributors = res;
             } else if(res.status == 202){
                 alert('The statistics you requested are not available try again in a moment');
+            } else if(res.status == 3333) {
+                $scope.contributors = res.payload;
             }
         });
     };
