@@ -2,17 +2,29 @@
 {% block content %}
 
 <body>
-    <h1>Howdy do!</h1>
+    <br><br><br><br>
+    <h1>{{ first_name }}'s Dashboard</h1>
+    <h3><a href="https://github.com/nodejs/node">NodeJS Repo Stats - Past Month</a></h3>
 
+    <table style="width:80%">
+        <tr>
+            <th>Name</th>
+            <th>Open pulls</th>
+            <th>Merged pulls</th>
+            <th>Unmerged pulls</th>
+        </tr>
 
-    <h3>Pull</h3>
-    <p>Triggered when a pull request is assigned, unassigned, labeled, unlabeled, opened, edited, closed, reopened, or synchronized. Also triggered when a pull request review is requested, or when a review request is removed.</p>
+        {% for item in stats %}
+        <tr>
+            <td>{{ item }}</td>
+            <td>{{ stats[item]['open_pulls'] }}</td>
+            <td>{{ stats[item]['merged_pulls'] }}</td>
+            <td>{{ stats[item]['unmerged_pulls'] }}</td>
+        </tr>
+        {% endfor %}
 
-    <h3>Push</h3>
+    </table>
 
-    <h3>Merge</h3>
-
-    <h3>Resolve</h3>
 
 </body>
 {% endblock %}
