@@ -9,7 +9,13 @@ angular.module('app').component('userList', {
 				'<div class="">' +
 					'<div class="row">' +
 						'<div class="col-md-3" style="text-align: right;">' +
-							'<span id="commits">{{ user.commits }}</span>' +
+							'<div>' +
+								'<span id="commits">{{ user.commits }}</span>' +
+							'</div>' +
+							'<div>' +
+								'<span id="commits-label">commits</span>' +
+							'</div>' +
+
 						'</div>' +
 					
 						'<div class="col-md-9">' +

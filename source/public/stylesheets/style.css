@@ -35,6 +35,11 @@ a {
 #commits {
 	font-size: 3em;
 	font-weight: bold;
+	padding-bottom: 0px;
+}
+
+#commits-label {
+	margin-top: 0px;
 }
 
 .name {
