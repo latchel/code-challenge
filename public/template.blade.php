@@ -12,6 +12,17 @@
 </head>
 <body>
 
+    <div class="header" ng-include="/header.html"></div>
+
+    <div class="content">
+        <? foreach($posts as $post){?>
+        <post post-id="<?=$post->post_id?>" user-name="<?=$post->user->name?>">
+            <?=$post->html?>
+        </post>
+        <? } ?>
+    </div>
+
+    <div class="footer" ng-include="/footer.html"></div>
 
     <script src="{{ elixir('js/' . $app . '.js') }}"></script>
 </body>
