@@ -6,24 +6,22 @@ As a small development team, Latchel developers will be expected to wear many ha
 
 - This task should take between 5 - 10 hours.
 - Feel free to ask questions by emailing Ethan at ethan@latchel.com
-- Pull requests should be submitted no later than 9PM (PST) on Sunday, January 29th.
 
 ### What We're Looking For
 
 - An understanding of Git functions (Pull, Push, Merge, Resolve, Pull Requests)
 - Quality Git commit history
-- Proficiency with back-end frameworks (Laravel, Symfony, Zend, Yii, Django, .NET, etc.)
+- Proficiency with PHP frameworks (Laravel, CodeIgniter, Symfony, etc.)
 - Proficiency with front-end JavaScript frameworks (AngularJS (1 or 2), React, Ember, etc.)
 - Proficiency with SQL databases (MySQL, PostgreSQL, etc.)
 - Ability to understand, plan for, and execute upon user stories and product/feature requirements.
-
-- A good-looking UI is a bonus, but not a requirement ;)
+- Ability to create a UI with the end-user in mind
 
 ## Setup
 
 1. Fork this repository
 2. Create a *source* folder to contain your code. 
-3. In the *source* directory, please create a web application using the server-side framework of your choice (Latchel currently uses Laravel 5.3) and/or front-end JavaScript framework of your choice (Latchel currently uses Angular 1.5x)
+3. In the *source* directory, please create a web application using the PHP framework of your choice (Latchel currently uses Laravel 5.3) and/or front-end JavaScript framework of your choice (Latchel currently uses Angular 1.5x)
 
 ## Scenario & Requirements
 
