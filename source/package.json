@@ -1,0 +1,25 @@
+{
+  "name": "latchel_code_challenge",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "test": "jasmine-node tests/"
+  },
+  "dependencies": {
+    "apicache": "^0.8.3",
+    "async": "^2.1.4",
+    "body-parser": "~1.15.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "ejs": "~2.5.2",
+    "express": "~4.14.0",
+    "morgan": "~1.7.0",
+    "request": "^2.79.0",
+    "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "frisby": "^0.8.5",
+    "jasmine-node": "^1.14.5"
+  }
+}

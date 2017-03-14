@@ -1,0 +1,79 @@
+body {
+  padding: 50px;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#main-container {
+	width: 1400px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.container-fluid {
+	font-family: 'Oswald', sans-serif;
+}
+
+
+#users-list img {
+	width: 100px;
+	height: 100px;
+	border: solid gray 2px;
+}
+
+#users-list img:hover {
+	-webkit-transition: opacity 0.3s ease-in;
+    -moz-transition: opacity 0.3s ease-in;
+    -o-transition: opacity 0.3s ease-in;
+    -ms-transition: opacity 0.3s ease-in;
+    transition: opacity 0.3s ease-in;
+	opacity: 0.3;
+}
+
+#commits {
+	font-size: 3em;
+	font-weight: bold;
+	padding-bottom: 0px;
+}
+
+#commits-label {
+	margin-top: 0px;
+}
+
+.name {
+	font-size: 2em;
+}
+
+#users-list .user-row {
+	margin: 16px;
+}
+
+#users-list .first #commits {
+	color: maroon;
+	font-size: 6em;
+	font-weight: 700;
+}
+
+.singlerow div {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.sidebar #subheader {
+	font-size: 3em;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.form-group input {
+	margin-bottom: 10px;
+}
+
+.form-group div {
+	display: inline-block;
+	padding: 5px;
+}
+
+

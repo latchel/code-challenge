@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<% include sources %>
+		
+		<script src="/javascripts/components/UsersComponent.js"></script>
+		<script src="/javascripts/components/InputFormComponent.js"></script>
+
+		<title><%= title %></title>
+	</head>
+
+	<!-- <body "> -->
+	<body>
+		<div id="main-container">
+			<div class="container-fluid">
+				
+				<div class="row">
+					<div class="banner">
+						<h1>That Git Counter</h1>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-3 affix">
+						<div class="sidebar">
+							<div id="inspirational-quote">
+								<blockquote>
+									<blockquote>
+										<p>
+											If you ain't first, you're last.
+										</p>
+										<footer>Ricky Bobby <cite title="Source Title">Talladega Nights</cite></footer>
+									</blockquote>
+									<footer>Your new dictat--I mean manager</footer>
+								</blockquote>
+							</div>
+
+							<div id="navbar">
+								<input-form on-view-change="root.gitUserData = $event.gitUserData"></input-form>
+							</div>
+
+							<div id="subheader">
+								Yeah so this is a list of people with their git commits. Interpret as you wish.
+							</div>
+
+							
+						</div>
+					</div>
+					<div class="col-xs-9 col-xs-offset-3">
+						<div class="main">
+							<user-list git-user-data="root.gitUserData"></user-list>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
