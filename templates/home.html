@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<body>
+    <br><br><br><br>
+    <h1>{{ first_name }}'s Dashboard</h1>
+    <h3><a href="https://github.com/nodejs/node">NodeJS Repo Stats - Past Month</a></h3>
+
+    <table style="width:80%">
+        <tr>
+            <th>Name</th>
+            <th>Open pulls</th>
+            <th>Merged pulls</th>
+            <th>Unmerged pulls</th>
+        </tr>
+
+        {% for item in stats %}
+        <tr>
+            <td>{{ item }}</td>
+            <td>{{ stats[item]['open_pulls'] }}</td>
+            <td>{{ stats[item]['merged_pulls'] }}</td>
+            <td>{{ stats[item]['unmerged_pulls'] }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+
+</body>
+{% endblock %}

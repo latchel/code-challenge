@@ -1,0 +1,30 @@
+stylesheet.css
+.navbar-nav>li>.dropdown-menu {
+    background-color: #000000;
+    color: #c6c6c6;;
+}
+
+.navbar-brand
+{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    margin-top: -15px;
+}
+
+.form-control {
+    height: 28px;
+}
+
+.input-group .form-control {
+    position: relative;
+    z-index: 3;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+    margin-left: -100px;
+}
+
+.navbar-form .input-group>.form-control {
+    width: 300%;
+}
