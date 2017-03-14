@@ -1,7 +1,7 @@
 .post{
-  max-height: 10000px;
+  transition: max-height 0.4s;
+  max-height: none;
   overflow: hidden;
-  border: 1px solid $light-grey;
   border-radius: 4px;
 
   &--collapsed{
