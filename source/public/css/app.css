@@ -1,0 +1,20 @@
+/* NAVIGATION */
+
+#header {
+	color: #FFF;
+	background-color: #303F9F;
+}
+	.header__logo {
+		width: 7rem;
+		float: left;
+		margin-right: 1rem;
+	}
+	.header__title {
+		font-size: 2.5rem;
+		font-weight: bold;
+	}
+
+
+#nav {
+	margin-bottom: 2rem;
+}
