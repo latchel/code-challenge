@@ -4,12 +4,12 @@ namespace Latchel;
 
 use Latchel\Model;
 
-class Content extends Model
+class User extends Model
 {
 
-    protected $table = 'content';
+    protected $table = 'user';
 
-    protected $primaryKey = 'content_id';
+    protected $primaryKey = 'user_id';
 
     /**
      * The attributes that are mass assignable.
@@ -17,6 +17,6 @@ class Content extends Model
      * @var array
      */
     protected $fillable = [
-        'html', 'slug'
+        'name','email'
     ];
 }
