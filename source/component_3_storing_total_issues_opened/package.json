@@ -1,0 +1,16 @@
+{
+  "name": "component_3_storing_total_issues_opened",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "npm rebuild grpc --target=8.10.0 --target_arch=x64 --target_platform=linux --target_libc=glibc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.435.0",
+    "firebase": "^5.9.2"
+  }
+}
