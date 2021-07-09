@@ -1,0 +1,7 @@
+{
+	"github": {
+		"token": "update_with_your_own_token",
+		"owner": "nodejs",
+		"repo": "node"
+	}
+}
