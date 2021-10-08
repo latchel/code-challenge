@@ -14,6 +14,8 @@ class HomeController extends Controller{
         return view('template', ['posts' = $posts]);
     }
 
+    //index() have a syntax error when trying to use posts variable in blade cause missing ">" after the = symbol
+
     public static function getPosts($slug){
         $posts = Post::where('slug', '=', $slug)->get();
 
@@ -32,4 +34,6 @@ class HomeController extends Controller{
         return $posts;
     }
 
+    // getPosts() doesn't make sense that have 3 foreach inside it, it set $posts variable a couple of times and the last one
+    // is trying to populate $comment->user I wondering why not using eager loading i.e.
 }

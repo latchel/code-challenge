@@ -1,38 +1,29 @@
-## Latchel Code Challenge
+# Hello Latchel Member!
 
-As a small development team, Latchel developers will be expected to wear many hats in the application development process. Front-end or back-end developer one day, database engineer or UI designer another, the ability to be proficient in the entire technology stack, as well as each step in the development life-cycle of the product is important. We beleive this allows the team to be more efficient as each developer is knowledgeable of the entire product, and also allows each developer to feel a greater sense of ownership in the final product. The purpose of this code challenge is to give you the chance to demonstrate your ability to take a feature from concept to completion, given a brief scenario and product requirements. The scenario below was made purposely broad to give you the freedom to make some decisions as to how your application is developed and designed, as well as to show off a bit :)
+## This is my solution and feedback about the old code
 
-### Key Notes:
+When analyzing the code, it was found that it was better to make this little app in an orderly way and with good practices such as:
 
-- This task should take between 5 - 10 hours.
-- Feel free to ask questions by emailing Ethan at ethan@latchel.com
+1. Divide into 2 folders, front-end and back-end
+2. On the front-end you will find the code in React and Back-end Laravel.
+3. Both folders were docker to be able to be lifted by any operating system
+4. A docker-compose was made to lift the application
+5. I put 2 images, mysql and an adminer (database viewer)
 
-### What We're Looking For
+The laravel API contains the migrations and the seeders to populate the database.
 
-- An understanding of Git functions (Pull, Push, Merge, Resolve, Pull Requests)
-- Quality Git commit history
-- Proficiency with PHP frameworks (Laravel, CodeIgniter, Symfony, etc.)
-- Proficiency with front-end JavaScript frameworks (AngularJS (1 or 2), React, Ember, etc.)
-- Proficiency with SQL databases (MySQL, PostgreSQL, etc.)
-- Ability to understand, plan for, and execute upon user stories and product/feature requirements.
-- Ability to create a UI with the end-user in mind
+Steps to raise the app:
 
-## Setup
+1. Install [ Docker Engine ](https://docs.docker.com/engine/install/) :fire:
+2. Go to the root of the project and run => `docker-compose build`
+3. Go to the root of the project and run => `docker-compose up -d`
+4. Then execute for populate DB `docker exec -it laravel sh`, `php artisan migrate`, `php artisan db:seed --class=PostSeeder
+5. Visit the [ App ](http://127.0.0.1:3000/)
+6. Visit the [ Adminer ](http://127.0.0.1:8080/), credentials: Server = mysql, user = root, password = root and database = latchel
+7. I hope it make sense to you guys!.
+   `
+   ![](code-review.png)
 
-1. Fork this repository
-2. Create a *source* folder to contain your code. 
-3. In the *source* directory, please create a web application using the PHP framework of your choice (Latchel currently uses Laravel 5.3) and/or front-end JavaScript framework of your choice (Latchel currently uses Angular 1.5x)
+## P.S
 
-## Scenario & Requirements
-
-Imagine you have been working at Latchel for over 1 year. A new product manager joins the team and is tasked with helping the company build internal productivity tools. You're working with him on his first project, for which you are given the following user story:
-
-"As the engineering manager, I want to be able to visit a web page to view who has contributed the most to our application's repository in the past month, so that I may better plan the upcoming sprint."
-
-Given this user story, build a small application that fulfills the requirements given by the product manager. Since the Latchel repositories are private, use the [NodeJS Repository](https://github.com/nodejs/node) as the repository mentioned in the scenario.
-  
-### Once Complete
-1. Create a SETUP.md in the base directory with setup instructions.
-2. Submit a pull request! We will review your application, then discuss with you during the technical interview.
-
-# Good luck, and have fun!
+-   The old code persist with comments about what i could see is wrong and you maybe feel overwhelmed 'cause 129 files with changes, it is generate when created 2 app, react & laravel with the official created commands.

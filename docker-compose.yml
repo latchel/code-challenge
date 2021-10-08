@@ -1,0 +1,66 @@
+version: '3.8'
+services:
+    laravel:
+        build: ./back-end
+        container_name: laravel
+        ports:
+            - '8000:8000'
+        volumes:
+            - ./back-end:/app
+            - /app/vendor
+        depends_on:
+            - mysql
+        networks:
+          - app-network
+    mysql:
+        image: mysql
+        container_name: mysql
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        env_file: .env
+        environment:
+            MYSQL_DATABASE: $DB_DATABASE
+            MYSQL_USER: $DB_USERNAME
+            MYSQL_ROOT_PASSWORD: $DB_PASSWORD
+        ports:
+            - 3307:3306
+        volumes:
+            - mysql_latchel:/var/lib/mysql
+        networks:
+          - app-network
+    adminer:
+        image: adminer
+        container_name: adminer
+        restart: always
+        ports:
+            - 8080:8080
+        environment:
+            ADMINER_DEFAULT_DB_DRIVER: mysql
+            ADMINER_DEFAULT_DB_HOST: mysql
+        depends_on:
+            - mysql
+        networks:
+          - app-network
+    react-app:
+        container_name: react-app
+        build: ./front-end
+        volumes:
+            - './front-end:/app'
+            - /app/node_modules
+        ports:
+            - '3000:3000'
+        networks:
+            - app-network
+        healthcheck:
+            test: ['CMD-SHELL', 'curl -f http://localhost:3000 || exit 1']
+            interval: 5s
+            timeout: 5s
+            retries: 3
+            start_period: 20s
+        networks:
+          - app-network
+networks:
+    app-network:
+        driver: bridge
+volumes:
+    mysql_latchel:

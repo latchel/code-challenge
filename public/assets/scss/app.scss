@@ -1,10 +1,12 @@
-.post{
-  transition: max-height 0.4s;
-  max-height: none;
-  overflow: hidden;
-  border-radius: 4px;
+.post {
+    transition: max-height 0.4s;
+    max-height: none;
+    overflow: hidden;
+    border-radius: 4px;
 
-  &--collapsed{
-    max-height: 0px;
-  }
+    &--collapsed {
+        max-height: 0px;
+    }
 }
+
+// Material Ui component Collapse gave a serious of this properties styles, that i use is the default ones.
