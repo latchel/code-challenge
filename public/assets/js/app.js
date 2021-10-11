@@ -1,23 +1,21 @@
-angular.module('CodeReviewApp', [])
-    .directive('post', [function(){
-        return {
-            restrict: 'A',
-            replace: true,
-            transclude: true,
-            template:   '<a ng-href="/posts/{{postid}}">' +
-                            '<div class="post__user" ng-click="toggleCollapse()">{{username}}</div>' +
-                            '<div class="post" ng-class="{\'post--collapsed\': collapsed}"></div>' +
-                        '</a>',
-            scope: {
-                postid: '@',
-                username: '@'
-            },
-            controller: ['$scope', function($scope){
-                $scope.collapsed = true;
+const App = (props) => {
+    const [showContent,setshowContent]=React.useState(false)
+    const toggleContent = () => showContent ? setshowContent(false) : setshowContent(true)
 
-                $scope.toggleCollapse = function(){
-                    $scope.collapsed = !$scope.collapsed;
-                };
-            }]
-        }
-    }]);
+    return <div>
+        <button onClick={()=>toggleContent()} className="post_user">{props.username}</button>
+        <div className={showContent ? "post": "post--collapse"} dangerouslySetInnerHTML={{__html:props.html}}></div>
+        <a href={"/posts/"+props.postid}>Go</a>
+    </div>
+}
+
+const domContainer = document.getElementsByClassName('postitem');
+
+for (let i = 0; i < domContainer.length; i++) {
+    let val = {
+        username:domContainer[i].getAttribute("user-name"),
+        postid:domContainer[i].getAttribute("post-id"),
+        html:domContainer[i].innerHTML
+    }
+    ReactDOM.render(React.createElement(App,val), domContainer[i])
+}

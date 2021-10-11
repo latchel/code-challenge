@@ -1,10 +1,16 @@
 .post{
   transition: max-height 0.4s;
-  max-height: none;
+  height: auto;
   overflow: hidden;
   border-radius: 4px;
 
   &--collapsed{
-    max-height: 0px;
+    height: 0px;
   }
+}
+
+.post_user{
+  background:transparent;
+  border: none;
+  padding:0;
 }
