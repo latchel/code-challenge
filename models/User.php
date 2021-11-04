@@ -1,7 +1,16 @@
 <?php
+<?php
+//Models  live in the app\Models
+//php artisan make:model Comment to generate
+// use this
+//namespace App\Models;
 
+//use Illuminate\Database\Eloquent\Model;
+
+//take off
 namespace Latchel;
 
+// take off
 use Latchel\Model;
 
 class User extends Model
@@ -16,6 +25,7 @@ class User extends Model
      *
      * @var array
      */
+       // make public  so we may add on to it
     protected $fillable = [
         'name','email'
     ];

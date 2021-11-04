@@ -1,1 +1,3 @@
 .idea/*
+
+# this is for any thing you don't want to track on git and I don't see .idea/* so this is not going to do anything yet
