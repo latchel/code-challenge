@@ -1,38 +1,56 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
+body {
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+h1, .summary {
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1 {
+  margin: 0;
+  padding: 0.67em 0;
+  color: rgb(118,131,144);
+  letter-spacing: 1px;
+  border-bottom: 2px solid black;
+  font-style: italic;
+}
+
+.summary .color-fg-muted, .summary .color-fg-muted a {
+  color: rgb(118,131,144);
+}
+.summary .color-fg-muted a {
+  text-decoration: none;
+}
+.summary .color-fg-default {
+  color: white;
+}
+.summary .color-fg-success {
+  color: rgb(87,171,90);
+}
+.summary .color-fg-danger {
+  color: rgb(229,83,75);
+}
+
+.contributors img {
+  height: 60px;
+  width: 60px;
+  float: left;
+  clear: left;
+  margin: 5px 20px;
+}
+.contributors .summary-bar {
+  height: 70px;
+  line-height: 70px;
+  position: relative;
+}
+
+.contributors .summary-bar .background-bar {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 90px;
+  background-color: rgb(77,56,47);
+  z-index: -1;
 }
