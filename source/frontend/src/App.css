@@ -1,0 +1,56 @@
+
+body {
+  background-color: #282c34;
+  color: white;
+}
+
+h1, .summary {
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  padding: 0.67em 0;
+  color: rgb(118,131,144);
+  letter-spacing: 1px;
+  border-bottom: 2px solid black;
+  font-style: italic;
+}
+
+.summary .color-fg-muted, .summary .color-fg-muted a {
+  color: rgb(118,131,144);
+}
+.summary .color-fg-muted a {
+  text-decoration: none;
+}
+.summary .color-fg-default {
+  color: white;
+}
+.summary .color-fg-success {
+  color: rgb(87,171,90);
+}
+.summary .color-fg-danger {
+  color: rgb(229,83,75);
+}
+
+.contributors img {
+  height: 60px;
+  width: 60px;
+  float: left;
+  clear: left;
+  margin: 5px 20px;
+}
+.contributors .summary-bar {
+  height: 70px;
+  line-height: 70px;
+  position: relative;
+}
+
+.contributors .summary-bar .background-bar {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 90px;
+  background-color: rgb(77,56,47);
+  z-index: -1;
+}
