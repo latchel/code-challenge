@@ -5,6 +5,7 @@ function App() {
   const [summary, setSummary] = useState("loading...");
   const [contributors, setContributors] = useState();
   const [errors, setErrors] = useState([]);
+  const longestBarPct = 85;
 
   useEffect(() => {
     fetch("api/summary.php")
@@ -26,7 +27,6 @@ function App() {
               { JSON.stringify(error) }
             </div>
           ))}
-
         </div>
       :null}
       {contributors ?
@@ -36,7 +36,7 @@ function App() {
               <img src={contributor.gravatar} alt="User's Avatar" />
               <div className="summary-bar">
                 <div className="background-bar"
-                     style={{width:`${contributor.commits * 85 / contributors[0].commits}%`}} />
+                     style={{width:`${contributor.commits * longestBarPct / contributors[0].commits}%`}} />
                 <strong>{contributor.name}</strong> authored <strong>{contributor.commits}</strong>
                 {` commit${contributor.commits===1 ? '' : 's'}`}
               </div>
